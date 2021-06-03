@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="ProductDataBinding">
+        <variable
+            name="product"
+            type="ro.alexmamo.firebase.data.Product" />
+
+        <variable
+            name="onProductClickListener"
+            type="ro.alexmamo.firebase.adapters.ProductsAdapter.OnProductClickListener" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{(v) -> onProductClickListener.onProductClick(product)}"
+        android:layout_margin="6dp"
+        app:cardBackgroundColor="@color/colorPrimaryDark"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="5dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp">
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:id="@+id/logo_image_view"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                app:productLogo="@{product.drawable}"
+                tools:background="@drawable/cloud_firestore_logo" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/name_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{product.name}"
+                android:textSize="22sp"
+                android:textColor="@color/colorWhite"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                tools:text="Cloud Firestore" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.cardview.widget.CardView>
+</layout>
