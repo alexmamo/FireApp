@@ -63,6 +63,9 @@ In case of Cloud Firestore, you can use a List of Movie objects as below:
   
 ![alt text](https://i.ibb.co/ggg4vQ8/All.png)
 
+**Disclaimer**
+This is not an officially supported Google product.
+
 [1]: https://play.google.com/store/apps/details?id=ro.alexmamo.firebase
 [2]: https://firebase.google.com/
 [3]: https://kotlinlang.org/
