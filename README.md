@@ -1,10 +1,10 @@
 # FirebaseApp - Clean Architecture
 
-[FirebaseApp][1] is an open source project that is built around [Firebase Services][2], especially for **learning purposes**. This application is written entirly in [Kotlin][3] using [Android Architecture Components][4] and MVVM architecture pattern. You'll see in code of this repo, how Firebase Services are working together.
+[FirebaseApp][1] is an open source project that is built around [Firebase Products][2], especially for **learning purposes**. This application is written entirly in [Kotlin][3] using [Android Architecture Components][4] and MVVM architecture pattern. You'll see in code of this repo, how Firebase Products are working together.
 
 Below you can find the docs for each tehnology that is used in this app:
 
-## Firebase Services:
+## Firebase Products:
 * [Firebase Authentication][5] using [Google Provider][6]
 * [Cloud Firestore][7]
 * [Firebase Realtime Database][8]
