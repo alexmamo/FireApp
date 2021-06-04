@@ -4,27 +4,27 @@
 
 Below you can find the docs for each tehnology that is used in this app:
 
-**Firebase Services:**
+## Firebase Services:
 * [Firebase Authentication][5] using [Google Provider][6]
 * [Cloud Firestore][7]
 * [Firebase Realtime Database][8]
 * [Cloud Storage for Firebase][16]
 
-**Android Architecture Components:**
+## Android Architecture Components:
 * [LiveData][9]
 * [ViewModel][10]
 
-**Dependency Injection:**
+## Dependency Injection:
 * [Hilt for Android][11]
 
-**Asynchronous Programming:**
+## Asynchronous Programming:
 * [Kotlin Coroutines][12]
 * [Asynchronous Flow][13]
 
-**Other Android Components:**
+## Other Android Components:
 * [Android Navigation Component][14]
 
-**Other Libraries:**
+## Other Libraries:
 * [Glide for Android][15]
 
 If you download or clone this repo, in order to make it work, you should follow the instructions given in the official documentation regarding on [how to add Firebase to your project][15].
@@ -63,8 +63,27 @@ In case of Cloud Firestore, you can use a List of Movie objects as below:
   
 ![alt text](https://i.ibb.co/ggg4vQ8/All.png)
 
+**License**
+---
+The code in this project is licensed under the Apache License 2.0.
+
+    Copyright 2018 Google LLC
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
 **Disclaimer**
-This is not an officially supported Google product.
+---
+* This is not an officially supported Google product.
 
 [1]: https://play.google.com/store/apps/details?id=ro.alexmamo.firebase
 [2]: https://firebase.google.com/
