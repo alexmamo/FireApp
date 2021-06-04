@@ -41,7 +41,6 @@
                 android:text="@{product.name}"
                 android:textSize="22sp"
                 android:textColor="@color/colorWhite"
-                android:layout_gravity="center_vertical"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 tools:text="Cloud Firestore" />

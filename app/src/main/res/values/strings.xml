@@ -1,6 +1,7 @@
 <resources>
     //App
     <string name="app_name">FirebaseApp</string>
+    <string name="authentication">Authentication</string>
 
     //Menu Items
     <string name="sign_out_item">Sign-out</string>

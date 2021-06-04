@@ -2,6 +2,7 @@ package ro.alexmamo.firebase.auth
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.activity.viewModels
@@ -31,12 +32,7 @@ class AuthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         dataBinding = ActivityAuthBinding.inflate(layoutInflater)
         setContentView(dataBinding.root)
-        setGoogleSignInButton()
         initResultLauncher()
-    }
-
-    private fun setGoogleSignInButton() {
-        dataBinding.googleSignInButton.setOnClickListener { openLauncher() }
     }
 
     private fun initResultLauncher() {
@@ -57,7 +53,8 @@ class AuthActivity : AppCompatActivity() {
         }
     }
 
-    private fun openLauncher() {
+    @Suppress("UNUSED_PARAMETER")
+    fun openLauncher(v: View) {
         resultLauncher.launch(signInIntent)
     }
 
