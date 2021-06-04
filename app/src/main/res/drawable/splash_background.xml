@@ -4,7 +4,7 @@
     <item android:drawable="@color/colorPrimary" />
 
     <item
-        android:drawable="@drawable/firebase_logo"
+        android:drawable="@drawable/firebase_app_logo"
         android:gravity="center"
         android:height="160dp"
         android:width="160dp"/>
