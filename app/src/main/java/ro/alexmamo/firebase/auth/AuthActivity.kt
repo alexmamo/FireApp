@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn.getSignedInAccountFromIntent
 import com.google.android.gms.common.api.ApiException
 import dagger.hilt.android.AndroidEntryPoint
+import ro.alexmamo.firebase.R
 import ro.alexmamo.firebase.data.Response
 import ro.alexmamo.firebase.databinding.ActivityAuthBinding
 import ro.alexmamo.firebase.utils.Actions.Companion.print
@@ -53,9 +54,10 @@ class AuthActivity : AppCompatActivity() {
         }
     }
 
-    @Suppress("UNUSED_PARAMETER")
     fun openLauncher(v: View) {
-        resultLauncher.launch(signInIntent)
+        if (v.id == R.id.google_sign_in_button) {
+            resultLauncher.launch(signInIntent)
+        }
     }
 
     private fun signInWithGoogle(idToken: String) {
