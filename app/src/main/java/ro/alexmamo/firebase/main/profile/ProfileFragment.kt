@@ -8,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import ro.alexmamo.firebase.adapters.ProductsAdapter
 import ro.alexmamo.firebase.adapters.ProductsAdapter.OnProductClickListener
 import ro.alexmamo.firebase.base.BaseFragment
@@ -22,19 +23,20 @@ import ro.alexmamo.firebase.utils.ManageViews.Companion.display
 import ro.alexmamo.firebase.utils.ManageViews.Companion.hide
 
 @AndroidEntryPoint
+@ExperimentalCoroutinesApi
 class ProfileFragment: BaseFragment<FragmentProfileBinding>(FragmentProfileBinding::inflate), OnProductClickListener {
     private val viewModel by viewModels<ProfileViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setProductsAdapter()
-        getUserData()
+        getUser()
     }
 
     private fun setProductsAdapter() {
         dataBinding.productsRecyclerView.adapter = ProductsAdapter(PRODUCTS, this)
     }
 
-    private fun getUserData() {
+    private fun getUser() {
         viewModel.getUser().observe(viewLifecycleOwner, { response ->
             when(response) {
                 is Response.Loading -> display(dataBinding.progressBar)

@@ -16,4 +16,10 @@ class AuthViewModel @Inject constructor(
             emit(response)
         }
     }
+
+    fun createUser() = liveData(Dispatchers.IO) {
+        repository.createUserInFirestore().collect { response ->
+            emit(response)
+        }
+    }
 }

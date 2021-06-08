@@ -20,9 +20,8 @@ class MainRepository @Inject constructor(
 ) {
     fun signOut() = flow {
         emit(Response.Loading())
-        googleSignInClient.signOut().await()
+        emit(Response.Success(googleSignInClient.signOut().await()))
         auth.signOut()
-        emit(Response.Success(true))
     }. catch { error ->
         error.message?.let { errorMessage ->
             emit(Response.Failure(errorMessage))

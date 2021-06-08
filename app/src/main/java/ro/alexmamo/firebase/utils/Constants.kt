@@ -5,7 +5,7 @@ import ro.alexmamo.firebase.data.Product
 
 object Constants {
     //App
-    const val TAG = "FirebaseTag"
+    const val TAG = "FireAppTag"
 
     //Intents
     const val SPLASH_INTENT = "splashIntent"

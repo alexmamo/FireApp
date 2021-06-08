@@ -4,6 +4,7 @@
 
     //Menu Items
     <string name="sign_out_item">Sign-out</string>
+    <string name="notifications_item">Notifications</string>
 
     //Fragments
     <string name="profile_fragment">My Profile</string>

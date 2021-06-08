@@ -65,6 +65,27 @@ class AuthActivity : AppCompatActivity() {
             when(response) {
                 is Response.Loading -> display(dataBinding.progressBar)
                 is Response.Success -> {
+                    val isNewUser = response.data
+                    if (isNewUser) {
+                        createUser()
+                    } else {
+                        goToMainActivity()
+                        hide(dataBinding.progressBar)
+                    }
+                }
+                is Response.Failure -> {
+                    print(response.errorMessage)
+                    hide(dataBinding.progressBar)
+                }
+            }
+        })
+    }
+
+    private fun createUser() {
+        viewModel.createUser().observe(this, { response ->
+            when(response) {
+                is Response.Loading -> display(dataBinding.progressBar)
+                is Response.Success -> {
                     goToMainActivity()
                     hide(dataBinding.progressBar)
                 }

@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/sign_out_item"
-        android:orderInCategory="103"
+        android:orderInCategory="100"
         android:title="@string/sign_out_item"
         app:showAsAction="never"/>
 </menu>

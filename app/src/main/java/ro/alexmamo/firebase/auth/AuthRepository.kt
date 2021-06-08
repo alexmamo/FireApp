@@ -1,7 +1,6 @@
 package ro.alexmamo.firebase.auth
 
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FieldValue.serverTimestamp
@@ -27,13 +26,8 @@ class AuthRepository @Inject constructor(
         emit(Response.Loading())
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         val authResult = auth.signInWithCredential(credential).await()
-        authResult.apply {
-            additionalUserInfo?.apply {
-                if (isNewUser) {
-                    createUserInFirestore(user)
-                }
-            }
-            emit(Response.Success(true))
+        authResult.additionalUserInfo?.apply {
+            emit(Response.Success(isNewUser))
         }
     }. catch { error ->
         error.message?.let { errorMessage ->
@@ -41,14 +35,21 @@ class AuthRepository @Inject constructor(
         }
     }
 
-    private suspend fun createUserInFirestore(currentUser: FirebaseUser?) {
-        currentUser?.apply {
+    suspend fun createUserInFirestore() = flow {
+        emit(Response.Loading())
+        auth.currentUser?.apply {
             usersRef.document(uid).set(mapOf(
                 NAME to displayName,
                 EMAIL to email,
                 PHOTO_URL to photoUrl?.toString(),
                 CREATED_AT to serverTimestamp()
-            )).await()
+            )).await().also {
+                emit(Response.Success(it))
+            }
+        }
+    }. catch { error ->
+        error.message?.let { errorMessage ->
+            emit(Response.Failure(errorMessage))
         }
     }
 }
