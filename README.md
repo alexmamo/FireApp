@@ -61,7 +61,7 @@ In case of Cloud Firestore, you can use a List of Movie objects as below:
   
   As you can see, there is no URL in the Movie object, so you should populate that value your self. Here is an [archive][]. You can do it using Cloud Storage as I did, or any other Hosting Service. In case of the Realtime Database, you can use the same list, but you should change the value of "rating" to a negative one. Why? So we can simply order the results accoding to that field.
   
-![alt text](https://i.ibb.co/YLKgf2j/All.png)
+![alt text](https://i.ibb.co/B48LgJb/AllNew.png)
 
 **License**
 ---
