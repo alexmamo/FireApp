@@ -11,6 +11,7 @@ import ro.alexmamo.firebase.adapters.MoviesAdapter.OnMovieClickListener
 import ro.alexmamo.firebase.base.BaseFragment
 import ro.alexmamo.firebase.data.Movie
 import ro.alexmamo.firebase.data.Response
+import ro.alexmamo.firebase.data.Response.*
 import ro.alexmamo.firebase.databinding.FragmentMoviesBinding
 import ro.alexmamo.firebase.main.MainActivity
 import ro.alexmamo.firebase.utils.Actions.Companion.print
@@ -48,12 +49,12 @@ class MoviesFragment: BaseFragment<FragmentMoviesBinding>(FragmentMoviesBinding:
     private fun getMovies() {
         viewModel.getMoviesFrom(productName).observe(viewLifecycleOwner, { response ->
             when(response) {
-                is Response.Loading -> display(dataBinding.progressBar)
-                is Response.Success -> {
+                is Loading -> display(dataBinding.progressBar)
+                is Success -> {
                     adapter.addMovies(response.data)
                     hide(dataBinding.progressBar)
                 }
-                is Response.Failure -> {
+                is Failure -> {
                     print(response.errorMessage)
                     hide(dataBinding.progressBar)
                 }

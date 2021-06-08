@@ -13,7 +13,7 @@ import ro.alexmamo.firebase.adapters.ProductsAdapter
 import ro.alexmamo.firebase.adapters.ProductsAdapter.OnProductClickListener
 import ro.alexmamo.firebase.base.BaseFragment
 import ro.alexmamo.firebase.data.Product
-import ro.alexmamo.firebase.data.Response
+import ro.alexmamo.firebase.data.Response.*
 import ro.alexmamo.firebase.data.User
 import ro.alexmamo.firebase.databinding.FragmentProfileBinding
 import ro.alexmamo.firebase.utils.Actions.Companion.print
@@ -39,12 +39,12 @@ class ProfileFragment: BaseFragment<FragmentProfileBinding>(FragmentProfileBindi
     private fun getUser() {
         viewModel.getUser().observe(viewLifecycleOwner, { response ->
             when(response) {
-                is Response.Loading -> display(dataBinding.progressBar)
-                is Response.Success -> {
+                is Loading -> display(dataBinding.progressBar)
+                is Success -> {
                     setUserDataToViews(response.data)
                     hide(dataBinding.progressBar)
                 }
-                is Response.Failure -> {
+                is Failure -> {
                     print(response.errorMessage)
                     hide(dataBinding.progressBar)
                 }

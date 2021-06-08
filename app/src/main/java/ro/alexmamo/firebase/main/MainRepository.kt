@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
-import ro.alexmamo.firebase.data.Response
+import ro.alexmamo.firebase.data.Response.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -19,12 +19,12 @@ class MainRepository @Inject constructor(
     private val auth: FirebaseAuth
 ) {
     fun signOut() = flow {
-        emit(Response.Loading())
-        emit(Response.Success(googleSignInClient.signOut().await()))
+        emit(Loading())
+        emit(Success(googleSignInClient.signOut().await()))
         auth.signOut()
     }. catch { error ->
         error.message?.let { errorMessage ->
-            emit(Response.Failure(errorMessage))
+            emit(Failure(errorMessage))
         }
     }
 

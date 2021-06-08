@@ -7,7 +7,7 @@ import com.google.firebase.firestore.FieldValue.serverTimestamp
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
-import ro.alexmamo.firebase.data.Response
+import ro.alexmamo.firebase.data.Response.*
 import ro.alexmamo.firebase.utils.Constants.CREATED_AT
 import ro.alexmamo.firebase.utils.Constants.EMAIL
 import ro.alexmamo.firebase.utils.Constants.NAME
@@ -23,20 +23,20 @@ class AuthRepository @Inject constructor(
     @Named(USERS_REF) private val usersRef: CollectionReference
 ) {
     suspend fun firebaseSignInWithGoogle(idToken: String) = flow {
-        emit(Response.Loading())
+        emit(Loading())
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         val authResult = auth.signInWithCredential(credential).await()
         authResult.additionalUserInfo?.apply {
-            emit(Response.Success(isNewUser))
+            emit(Success(isNewUser))
         }
     }. catch { error ->
         error.message?.let { errorMessage ->
-            emit(Response.Failure(errorMessage))
+            emit(Failure(errorMessage))
         }
     }
 
     suspend fun createUserInFirestore() = flow {
-        emit(Response.Loading())
+        emit(Loading())
         auth.currentUser?.apply {
             usersRef.document(uid).set(mapOf(
                 NAME to displayName,
@@ -44,12 +44,12 @@ class AuthRepository @Inject constructor(
                 PHOTO_URL to photoUrl?.toString(),
                 CREATED_AT to serverTimestamp()
             )).await().also {
-                emit(Response.Success(it))
+                emit(Success(it))
             }
         }
     }. catch { error ->
         error.message?.let { errorMessage ->
-            emit(Response.Failure(errorMessage))
+            emit(Failure(errorMessage))
         }
     }
 }

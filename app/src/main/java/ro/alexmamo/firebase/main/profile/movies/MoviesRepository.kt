@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
 import ro.alexmamo.firebase.data.Movie
-import ro.alexmamo.firebase.data.Response
+import ro.alexmamo.firebase.data.Response.*
 import ro.alexmamo.firebase.utils.Constants.CLOUD_FIRESTORE
 import ro.alexmamo.firebase.utils.Constants.MOVIES_REF
 import ro.alexmamo.firebase.utils.Constants.RATING
@@ -22,15 +22,15 @@ class MoviesRepository @Inject constructor(
     @Named(MOVIES_REF) private val moviesDbRef: DatabaseReference,
 ) {
     fun getMoviesFrom(productName: String) = flow {
-        emit(Response.Loading())
-        emit(Response.Success(when (productName) {
+        emit(Loading())
+        emit(Success(when (productName) {
             CLOUD_FIRESTORE -> getMoviesFromCloudFirestore()
             REALTIME_DATABASE -> getMoviesFromRealtimeDatabase()
             else -> throw AssertionError()
         }))
     }. catch { error ->
         error.message?.let { errorMessage ->
-            emit(Response.Failure(errorMessage))
+            emit(Failure(errorMessage))
         }
     }
 

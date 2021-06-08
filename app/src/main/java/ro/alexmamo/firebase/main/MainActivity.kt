@@ -12,7 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import ro.alexmamo.firebase.R
-import ro.alexmamo.firebase.data.Response
+import ro.alexmamo.firebase.data.Response.*
 import ro.alexmamo.firebase.databinding.ActivityMainBinding
 import ro.alexmamo.firebase.utils.Actions.Companion.print
 import ro.alexmamo.firebase.utils.Constants.AUTH_INTENT
@@ -51,9 +51,9 @@ class MainActivity : AppCompatActivity() {
     private fun signOut() {
         viewModel.signOut().observe(this, { response ->
             when(response) {
-                is Response.Loading -> display(dataBinding.progressBar)
-                is Response.Success -> hide(dataBinding.progressBar)
-                is Response.Failure -> {
+                is Loading -> display(dataBinding.progressBar)
+                is Success -> hide(dataBinding.progressBar)
+                is Failure -> {
                     print(response.errorMessage)
                     hide(dataBinding.progressBar)
                 }

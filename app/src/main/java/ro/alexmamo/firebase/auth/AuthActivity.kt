@@ -11,7 +11,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn.getSignedInAccountFro
 import com.google.android.gms.common.api.ApiException
 import dagger.hilt.android.AndroidEntryPoint
 import ro.alexmamo.firebase.R
-import ro.alexmamo.firebase.data.Response
+import ro.alexmamo.firebase.data.Response.*
 import ro.alexmamo.firebase.databinding.ActivityAuthBinding
 import ro.alexmamo.firebase.utils.Actions.Companion.print
 import ro.alexmamo.firebase.utils.Constants.MAIN_INTENT
@@ -63,8 +63,8 @@ class AuthActivity : AppCompatActivity() {
     private fun signInWithGoogle(idToken: String) {
         viewModel.signInWithGoogle(idToken).observe(this, { response ->
             when(response) {
-                is Response.Loading -> display(dataBinding.progressBar)
-                is Response.Success -> {
+                is Loading -> display(dataBinding.progressBar)
+                is Success -> {
                     val isNewUser = response.data
                     if (isNewUser) {
                         createUser()
@@ -73,7 +73,7 @@ class AuthActivity : AppCompatActivity() {
                         hide(dataBinding.progressBar)
                     }
                 }
-                is Response.Failure -> {
+                is Failure -> {
                     print(response.errorMessage)
                     hide(dataBinding.progressBar)
                 }
@@ -84,12 +84,12 @@ class AuthActivity : AppCompatActivity() {
     private fun createUser() {
         viewModel.createUser().observe(this, { response ->
             when(response) {
-                is Response.Loading -> display(dataBinding.progressBar)
-                is Response.Success -> {
+                is Loading -> display(dataBinding.progressBar)
+                is Success -> {
                     goToMainActivity()
                     hide(dataBinding.progressBar)
                 }
-                is Response.Failure -> {
+                is Failure -> {
                     print(response.errorMessage)
                     hide(dataBinding.progressBar)
                 }
