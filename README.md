@@ -32,34 +32,34 @@ If you download or clone this repo, in order to make it work, you should follow 
 In case of Cloud Firestore, you can use a List of Movie objects as below:
   
     val movies = listOf(
-        Movie("The Shawshank Redemption", 1994, 9.2, ""),
-        Movie("The Godfather", 1972, 9.1, ""),
-        Movie("The Godfather: Part II", 1974, 9.0, ""),
-        Movie("The Dark Knight", 2008, 9.0, ""),
-        Movie("12 Angry Men", 1957, 8.9, ""),
-        Movie("Schindler's List", 1993, 8.9, ""),
-        Movie("The Lord of the Rings: The Return of the King (2003)", 2003, 8.9, ""),
-        Movie("Pulp Fiction", 1994, 8.8, ""),
-        Movie("The Good, the Bad and the Ugly", 1966, 8.8, ""),
-        Movie("The Lord of the Rings: The Fellowship of the Ring", 2001, 8.8, ""),
-        Movie("Fight Club", 1999, 8.8, ""),
-        Movie("Forrest Gump", 1994, 8.7, ""),
-        Movie("Inception", 2010, 8.7, ""),
-        Movie("The Lord of the Rings: The Two Towers", 2002, 8.7, ""),
-        Movie("Star Wars: Episode V - The Empire Strikes Back", 1980, 8.7, ""),
-        Movie("The Matrix", 1999, 8.6, ""),
-        Movie("Goodfellas", 1990, 8.6, ""),
-        Movie("One Flew Over the Cuckoo's Nest", 1975, 8.6, ""),
-        Movie("Seven Samurai", 1954, 8.6, ""),
-        Movie("Se7en", 1995, 8.6, ""),
-        Movie("The Silence of the Lambs", 1991, 8.6, ""),
-        Movie("City of God", 2002, 8.6, ""),
-        Movie("It's a Wonderful Life", 1946, 8.6, ""),
-        Movie("Life Is Beautiful", 1997, 8.6, ""),
-        Movie("Star Wars: Episode IV - A New Hope", 1977, 8.6, ""),
+        Movie("A Love Affair In Transit", 1994, 9.2, ""),
+        Movie("Adrift", 1972, 9.1, ""),
+        Movie("All About You", 1974, 9.0, ""),
+        Movie("Blood Bone And Beasts", 2008, 9.0, ""),
+        Movie("Changing To Victory", 1957, 8.9, ""),
+        Movie("Down The Rabbit Hole", 1993, 8.9, ""),
+        Movie("En Route", 2003, 8.9, ""),
+        Movie("Into The Darkness", 1994, 8.8, ""),
+        Movie("Lighting Shadows", 1966, 8.8, ""),
+        Movie("Locked", 2001, 8.8, ""),
+        Movie("Lost Girl", 1999, 8.8, ""),
+        Movie("Love Africa", 1994, 8.7, ""),
+        Movie("Movie Night", 2010, 8.7, ""),
+        Movie("Outdoor Movie Night", 2002, 8.7, ""),
+        Movie("She", 1980, 8.7, ""),
+        Movie("The Great Big Bridge", 1999, 8.6, ""),
+        Movie("The Life Of Richard Parker", 1990, 8.6, ""),
+        Movie("The Lost Girl", 1975, 8.6, ""),
+        Movie("The Love Of Mine", 1954, 8.6, ""),
+        Movie("The Night Is Young", 1995, 8.6, ""),
+        Movie("The Walk", 1991, 8.6, ""),
+        Movie("The Way We Get By", 2002, 8.6, ""),
+        Movie("Thriller Movie Night", 1946, 8.6, ""),
+        Movie("Top Of The World", 1997, 8.6, ""),
+        Movie("Train To Hell", 1977, 8.6, ""),
     )
   
-  As you can see, there is no URL in the Movie object, so you should populate that value your self. You can do it using Cloud Storage as I did, or any other Hosting Service. In case of the Realtime Database, you can use the same list, but you should change the value of "rating" to a negative one. Why? So we can simply order the results accoding to that field.
+  As you can see, there is no URL in the Movie object, so you should populate that value your self. Here is an [archive][]. You can do it using Cloud Storage as I did, or any other Hosting Service. In case of the Realtime Database, you can use the same list, but you should change the value of "rating" to a negative one. Why? So we can simply order the results accoding to that field.
   
 ![alt text](https://i.ibb.co/YLKgf2j/All.png)
 
@@ -101,3 +101,4 @@ The code in this project is licensed under the Apache License 2.0.
 [14]: https://developer.android.com/guide/navigation
 [15]: https://github.com/bumptech/glide
 [16]: https://firebase.google.com/docs/storage
+[17]: http://alexmamo.ro/apps/FireApp/movie_posters.rar
