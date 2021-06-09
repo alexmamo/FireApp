@@ -29,6 +29,9 @@ class MoviesAdapter(
     }
 
     fun addMovies(movies: List<Movie>) {
+        if (this.movies.isNotEmpty()) {
+            this.movies.clear()
+        }
         this.movies.addAll(movies)
         notifyDataSetChanged()
     }
