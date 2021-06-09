@@ -12,6 +12,9 @@ object Constants {
     const val AUTH_INTENT = "authIntent"
     const val MAIN_INTENT = "mainIntent"
 
+    //Bundles
+    const val MOVIE = "movie"
+
     //Database Types
     const val PRODUCT_NAME = "productName"
     const val CLOUD_FIRESTORE = "Cloud Firestore"

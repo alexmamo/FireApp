@@ -43,7 +43,7 @@
                 android:textColor="@color/colorWhite"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                tools:text="Cloud Firestore" />
+                tools:text="@string/product_name" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.cardview.widget.CardView>
 </layout>

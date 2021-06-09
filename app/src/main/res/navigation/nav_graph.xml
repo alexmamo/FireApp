@@ -17,4 +17,11 @@
         android:name="ro.alexmamo.firebase.main.profile.movies.MoviesFragment"
         tools:layout="@layout/fragment_movies" >
     </fragment>
+
+    <fragment
+        android:id="@+id/movie_fragment"
+        android:name="ro.alexmamo.firebase.main.profile.movies.movie.MovieFragment"
+        android:label="@string/movie_fragment"
+        tools:layout="@layout/fragment_movie" >
+    </fragment>
 </navigation>

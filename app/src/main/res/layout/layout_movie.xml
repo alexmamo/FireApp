@@ -48,7 +48,7 @@
                 android:layout_marginEnd="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="9.2" />
+                tools:text="@string/movie_rating" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/title_text_view"
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="@{movie.getFullTitle(movie.title, movie.year)}"
+                android:text="@{movie.getFullTitle()}"
                 android:textColor="@color/colorWhite"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
@@ -65,7 +65,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                tools:text="Titanic (1997)" />
+                tools:text="@string/movie_name" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </layout>

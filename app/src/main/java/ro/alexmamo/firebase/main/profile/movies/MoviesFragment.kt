@@ -2,19 +2,20 @@ package ro.alexmamo.firebase.main.profile.movies
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast.LENGTH_SHORT
-import android.widget.Toast.makeText
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import ro.alexmamo.firebase.R
 import ro.alexmamo.firebase.adapters.MoviesAdapter
 import ro.alexmamo.firebase.adapters.MoviesAdapter.OnMovieClickListener
 import ro.alexmamo.firebase.base.BaseFragment
 import ro.alexmamo.firebase.data.Movie
-import ro.alexmamo.firebase.data.Response
 import ro.alexmamo.firebase.data.Response.*
 import ro.alexmamo.firebase.databinding.FragmentMoviesBinding
 import ro.alexmamo.firebase.main.MainActivity
 import ro.alexmamo.firebase.utils.Actions.Companion.print
+import ro.alexmamo.firebase.utils.Constants.MOVIE
 import ro.alexmamo.firebase.utils.Constants.PRODUCT_NAME
 import ro.alexmamo.firebase.utils.ManageViews.Companion.display
 import ro.alexmamo.firebase.utils.ManageViews.Companion.hide
@@ -63,6 +64,6 @@ class MoviesFragment: BaseFragment<FragmentMoviesBinding>(FragmentMoviesBinding:
     }
 
     override fun onMovieClick(movie: Movie) {
-        makeText(context, movie.title, LENGTH_SHORT).show()
+        findNavController().navigate(R.id.movie_fragment, bundleOf(MOVIE to movie))
     }
 }

@@ -4,14 +4,21 @@
 
     //Menu Items
     <string name="sign_out_item">Sign-out</string>
-    <string name="notifications_item">Notifications</string>
 
     //Fragments
     <string name="profile_fragment">My Profile</string>
+    <string name="movie_fragment">Movie Details</string>
 
     //Buttons
     <string name="sign_in_with_google_button">Sign in with Google</string>
 
     //TextViews
     <string name="authentication">Authentication</string>
+
+    //Dummy Data
+    <string name="user_name">Alex Mamo</string>
+    <string name="product_name">Cloud Firestore</string>
+    <string name="movie_name">Lighting Shadows (2009)</string>
+    <string name="movie_overview">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+    <string name="movie_rating">9.2</string>
 </resources>
