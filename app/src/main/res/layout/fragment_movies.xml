@@ -12,8 +12,9 @@
         android:id="@+id/movies_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="3"/>
+        app:layoutManager="GridLayoutManager"
+        app:spanCount="3"
+        tools:listitem="@layout/layout_movie"/>
 
     <ProgressBar
         android:id="@+id/progress_bar"
