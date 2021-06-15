@@ -63,6 +63,10 @@ In case of Cloud Firestore, you can use a List of Movie objects as below:
   
 ![alt text](https://i.ibb.co/B48LgJb/AllNew.png)
 
+You can also check the following article writen on Mediul publication:
+
+* [How to create an Android app using multiple Firebase products in Kotlin?][18]
+
 **License**
 ---
 The code in this project is licensed under the Apache License 2.0.
@@ -102,3 +106,4 @@ The code in this project is licensed under the Apache License 2.0.
 [15]: https://github.com/bumptech/glide
 [16]: https://firebase.google.com/docs/storage
 [17]: http://alexmamo.ro/apps/FireApp/movie_posters.rar
+[18]: https://medium.com/firebase-tips-tricks/how-to-create-an-android-app-using-multiple-firebase-products-in-kotlin-16aade81ffec
