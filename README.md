@@ -23,6 +23,7 @@ Below you can find the docs for each tehnology that is used in this app:
 
 ## Other Android Components:
 * [Android Navigation Component][14]
+* [View Binding][19]
 
 ## Other Libraries:
 * [Glide for Android][15]
@@ -107,3 +108,4 @@ The code in this project is licensed under the Apache License 2.0.
 [16]: https://firebase.google.com/docs/storage
 [17]: http://alexmamo.ro/apps/FireApp/movie_posters.rar
 [18]: https://medium.com/firebase-tips-tricks/how-to-create-an-android-app-using-multiple-firebase-products-in-kotlin-16aade81ffec
+[19]: https://developer.android.com/topic/libraries/view-binding
