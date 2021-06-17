@@ -68,6 +68,8 @@ You can also check the following article writen on Mediul publication:
 
 * [How to create an Android app using multiple Firebase products in Kotlin?][18]
 
+* See it also on youtube: https://www.youtube.com/watch?v=WueAM7LR9X0&ab_channel=AlexMamo
+
 **License**
 ---
 The code in this project is licensed under the Apache License 2.0.
