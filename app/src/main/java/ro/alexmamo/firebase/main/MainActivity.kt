@@ -16,8 +16,6 @@ import ro.alexmamo.firebase.data.Response.*
 import ro.alexmamo.firebase.databinding.ActivityMainBinding
 import ro.alexmamo.firebase.utils.Actions.Companion.print
 import ro.alexmamo.firebase.utils.Constants.AUTH_INTENT
-import ro.alexmamo.firebase.utils.ManageViews.Companion.display
-import ro.alexmamo.firebase.utils.ManageViews.Companion.hide
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -51,11 +49,11 @@ class MainActivity : AppCompatActivity() {
     private fun signOut() {
         viewModel.signOut().observe(this, { response ->
             when(response) {
-                is Loading -> display(dataBinding.progressBar)
-                is Success -> hide(dataBinding.progressBar)
+                is Loading -> dataBinding.progressBar.show()
+                is Success -> dataBinding.progressBar.hide()
                 is Failure -> {
                     print(response.errorMessage)
-                    hide(dataBinding.progressBar)
+                    dataBinding.progressBar.hide()
                 }
             }
         })

@@ -15,8 +15,6 @@ import ro.alexmamo.firebase.data.Response.*
 import ro.alexmamo.firebase.databinding.ActivityAuthBinding
 import ro.alexmamo.firebase.utils.Actions.Companion.print
 import ro.alexmamo.firebase.utils.Constants.MAIN_INTENT
-import ro.alexmamo.firebase.utils.ManageViews.Companion.display
-import ro.alexmamo.firebase.utils.ManageViews.Companion.hide
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -63,19 +61,19 @@ class AuthActivity : AppCompatActivity() {
     private fun signInWithGoogle(idToken: String) {
         viewModel.signInWithGoogle(idToken).observe(this, { response ->
             when(response) {
-                is Loading -> display(dataBinding.progressBar)
+                is Loading -> dataBinding.progressBar.show()
                 is Success -> {
                     val isNewUser = response.data
                     if (isNewUser) {
                         createUser()
                     } else {
                         goToMainActivity()
-                        hide(dataBinding.progressBar)
+                        dataBinding.progressBar.hide()
                     }
                 }
                 is Failure -> {
                     print(response.errorMessage)
-                    hide(dataBinding.progressBar)
+                    dataBinding.progressBar.hide()
                 }
             }
         })
@@ -84,14 +82,14 @@ class AuthActivity : AppCompatActivity() {
     private fun createUser() {
         viewModel.createUser().observe(this, { response ->
             when(response) {
-                is Loading -> display(dataBinding.progressBar)
+                is Loading -> dataBinding.progressBar.show()
                 is Success -> {
                     goToMainActivity()
-                    hide(dataBinding.progressBar)
+                    dataBinding.progressBar.hide()
                 }
                 is Failure -> {
                     print(response.errorMessage)
-                    hide(dataBinding.progressBar)
+                    dataBinding.progressBar.hide()
                 }
             }
         })

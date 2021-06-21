@@ -19,8 +19,6 @@ import ro.alexmamo.firebase.databinding.FragmentProfileBinding
 import ro.alexmamo.firebase.utils.Actions.Companion.print
 import ro.alexmamo.firebase.utils.Constants.PRODUCTS
 import ro.alexmamo.firebase.utils.Constants.PRODUCT_NAME
-import ro.alexmamo.firebase.utils.ManageViews.Companion.display
-import ro.alexmamo.firebase.utils.ManageViews.Companion.hide
 
 @AndroidEntryPoint
 @ExperimentalCoroutinesApi
@@ -39,14 +37,14 @@ class ProfileFragment: BaseFragment<FragmentProfileBinding>(FragmentProfileBindi
     private fun getUser() {
         viewModel.getUser().observe(viewLifecycleOwner, { response ->
             when(response) {
-                is Loading -> display(dataBinding.progressBar)
+                is Loading -> dataBinding.progressBar.show()
                 is Success -> {
                     setUserDataToViews(response.data)
-                    hide(dataBinding.progressBar)
+                    dataBinding.progressBar.hide()
                 }
                 is Failure -> {
                     print(response.errorMessage)
-                    hide(dataBinding.progressBar)
+                    dataBinding.progressBar.hide()
                 }
             }
         })

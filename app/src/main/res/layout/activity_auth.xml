@@ -49,8 +49,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/authentication_text_view"/>
 
-    <ProgressBar
+    <androidx.core.widget.ContentLoadingProgressBar
         android:id="@+id/progress_bar"
-        style="@style/ProgressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyleSmall"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
         tools:visibility="visible"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

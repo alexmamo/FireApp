@@ -13,16 +13,4 @@
     <style name="SplashTheme" parent="AppTheme.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_background</item>
     </style>
-
-    <style name="ProgressBarStyle">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:scaleX">0.5</item>
-        <item name="android:scaleY">0.5</item>
-        <item name="android:visibility">gone</item>
-        <item name="layout_constraintBottom_toBottomOf">parent</item>
-        <item name="layout_constraintEnd_toEndOf">parent</item>
-        <item name="layout_constraintStart_toStartOf">parent</item>
-        <item name="layout_constraintTop_toTopOf">parent</item>
-    </style>
 </resources>

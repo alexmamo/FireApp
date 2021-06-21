@@ -5,8 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:ignore="MissingConstraints">
+    android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -26,9 +25,16 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:background="@drawable/fire_app_logo" />
 
-        <ProgressBar
+        <androidx.core.widget.ContentLoadingProgressBar
             android:id="@+id/progress_bar"
-            style="@style/ProgressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/progressBarStyleSmall"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"
             tools:visibility="visible"/>
 
         <androidx.appcompat.widget.AppCompatTextView
