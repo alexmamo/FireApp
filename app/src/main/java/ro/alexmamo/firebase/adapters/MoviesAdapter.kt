@@ -10,9 +10,10 @@ import ro.alexmamo.firebase.data.Movie
 import ro.alexmamo.firebase.databinding.MovieDataBinding
 
 class MoviesAdapter(
-    val movies: MutableList<Movie>,
     private val onMovieClickListener: OnMovieClickListener
 ) : RecyclerView.Adapter<MovieViewHolder>() {
+    var movies = listOf<Movie>()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val dataBinding = MovieDataBinding.inflate(layoutInflater, parent, false)
@@ -24,15 +25,10 @@ class MoviesAdapter(
         holder.bindMovie(movie)
     }
 
-    override fun getItemCount(): Int {
-        return movies.size
-    }
+    override fun getItemCount() = movies.size
 
     fun addMovies(movies: List<Movie>) {
-        if (this.movies.isNotEmpty()) {
-            this.movies.clear()
-        }
-        this.movies.addAll(movies)
+        this.movies = movies
         notifyDataSetChanged()
     }
 

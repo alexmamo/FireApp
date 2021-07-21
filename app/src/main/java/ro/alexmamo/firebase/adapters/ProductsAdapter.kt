@@ -23,9 +23,7 @@ class ProductsAdapter(
         holder.bindProduct(product)
     }
 
-    override fun getItemCount(): Int {
-        return products.size
-    }
+    override fun getItemCount() = products.size
 
     inner class ProductViewHolder(
         private val dataBinding: ViewDataBinding

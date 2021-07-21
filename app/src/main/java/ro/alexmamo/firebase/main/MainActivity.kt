@@ -6,11 +6,14 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import ro.alexmamo.firebase.R
 import ro.alexmamo.firebase.data.Response.*
 import ro.alexmamo.firebase.databinding.ActivityMainBinding
@@ -47,25 +50,29 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun signOut() {
-        viewModel.signOut().observe(this, { response ->
-            when(response) {
-                is Loading -> dataBinding.progressBar.show()
-                is Success -> dataBinding.progressBar.hide()
-                is Failure -> {
-                    print(response.errorMessage)
-                    dataBinding.progressBar.hide()
+        lifecycleScope.launch {
+            viewModel.signOut().collect { response ->
+                when(response) {
+                    is Loading -> dataBinding.progressBar.show()
+                    is Success -> dataBinding.progressBar.hide()
+                    is Failure -> {
+                        print(response.errorMessage)
+                        dataBinding.progressBar.hide()
+                    }
                 }
             }
-        })
+        }
     }
 
     @ExperimentalCoroutinesApi
     private fun getAuthState() {
-        viewModel.getAuthState().observe(this, { isUserSignedOut ->
-            if (isUserSignedOut) {
-                goToAuthInActivity()
+        lifecycleScope.launch {
+            viewModel.getAuthState().collect { isUserSignedOut ->
+                if (isUserSignedOut) {
+                    goToAuthInActivity()
+                }
             }
-        })
+        }
     }
 
     private fun goToAuthInActivity() {

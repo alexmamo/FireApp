@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import ro.alexmamo.firebase.adapters.ProductsAdapter
 import ro.alexmamo.firebase.adapters.ProductsAdapter.OnProductClickListener
 import ro.alexmamo.firebase.base.BaseFragment
@@ -35,19 +38,21 @@ class ProfileFragment: BaseFragment<FragmentProfileBinding>(FragmentProfileBindi
     }
 
     private fun getUser() {
-        viewModel.getUser().observe(viewLifecycleOwner, { response ->
-            when(response) {
-                is Loading -> dataBinding.progressBar.show()
-                is Success -> {
-                    setUserDataToViews(response.data)
-                    dataBinding.progressBar.hide()
-                }
-                is Failure -> {
-                    print(response.errorMessage)
-                    dataBinding.progressBar.hide()
+        lifecycleScope.launch {
+            viewModel.getUser().collect { response ->
+                when(response) {
+                    is Loading -> dataBinding.progressBar.show()
+                    is Success -> {
+                        setUserDataToViews(response.data)
+                        dataBinding.progressBar.hide()
+                    }
+                    is Failure -> {
+                        print(response.errorMessage)
+                        dataBinding.progressBar.hide()
+                    }
                 }
             }
-        })
+        }
     }
 
     private fun setUserDataToViews(user: User) {
