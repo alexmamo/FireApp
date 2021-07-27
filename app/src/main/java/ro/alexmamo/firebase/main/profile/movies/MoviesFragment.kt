@@ -54,7 +54,7 @@ class MoviesFragment: BaseFragment<FragmentMoviesBinding>(FragmentMoviesBinding:
                 when(response) {
                     is Loading -> dataBinding.progressBar.show()
                     is Success -> {
-                        adapter.addMovies(response.data)
+                        adapter.submitList(response.data)
                         dataBinding.progressBar.hide()
                     }
                     is Failure -> {

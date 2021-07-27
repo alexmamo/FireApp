@@ -4,6 +4,7 @@ import java.io.Serializable
 import kotlin.math.abs
 
 data class Movie(
+    var id: String? = null,
     var title: String? = null,
     var year: Int? = null,
     var rating: Double? = null,
