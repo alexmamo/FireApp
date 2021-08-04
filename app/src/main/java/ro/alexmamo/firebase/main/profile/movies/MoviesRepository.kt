@@ -35,9 +35,7 @@ class MoviesRepository @Inject constructor(
     }
 
     private suspend fun getMoviesFromCloudFirestore(): List<Movie> {
-        return moviesCollRef.orderBy(RATING, DESCENDING).get().await().documents.mapNotNull { doc ->
-            doc.toObject(Movie::class.java)
-        }
+        return moviesCollRef.orderBy(RATING, DESCENDING).get().await().toObjects(Movie::class.java)
     }
 
     private suspend fun getMoviesFromRealtimeDatabase(): List<Movie> {
