@@ -6,14 +6,11 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import ro.alexmamo.firebase.R
 import ro.alexmamo.firebase.data.Response.*
 import ro.alexmamo.firebase.databinding.ActivityMainBinding
@@ -22,6 +19,7 @@ import ro.alexmamo.firebase.utils.Constants.AUTH_INTENT
 import javax.inject.Inject
 import javax.inject.Named
 
+@ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     @Named(AUTH_INTENT) @Inject lateinit var authIntent: Intent
@@ -29,7 +27,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private val viewModel by viewModels<MainViewModel>()
 
-    @ExperimentalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dataBinding = ActivityMainBinding.inflate(layoutInflater)
@@ -50,29 +47,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun signOut() {
-        lifecycleScope.launch {
-            viewModel.signOut().collect { response ->
-                when(response) {
-                    is Loading -> dataBinding.progressBar.show()
-                    is Success -> dataBinding.progressBar.hide()
-                    is Failure -> {
-                        print(response.errorMessage)
-                        dataBinding.progressBar.hide()
-                    }
+        viewModel.signOut().observe(this, { response ->
+            when(response) {
+                is Loading -> dataBinding.progressBar.show()
+                is Success -> dataBinding.progressBar.hide()
+                is Failure -> {
+                    print(response.errorMessage)
+                    dataBinding.progressBar.hide()
                 }
             }
-        }
+        })
     }
 
     @ExperimentalCoroutinesApi
     private fun getAuthState() {
-        lifecycleScope.launch {
-            viewModel.getAuthState().collect { isUserSignedOut ->
-                if (isUserSignedOut) {
-                    goToAuthInActivity()
-                }
+        viewModel.getAuthState().observe(this, { isUserSignedOut ->
+            if (isUserSignedOut) {
+                goToAuthInActivity()
             }
-        }
+        })
     }
 
     private fun goToAuthInActivity() {
