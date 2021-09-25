@@ -3,12 +3,12 @@ package ro.alexmamo.firebase.main.profile.movies
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.Query.Direction.DESCENDING
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
 import ro.alexmamo.firebase.data.Movie
 import ro.alexmamo.firebase.data.Response.*
 import ro.alexmamo.firebase.utils.Constants.CLOUD_FIRESTORE
+import ro.alexmamo.firebase.utils.Constants.ERROR_MESSAGE
 import ro.alexmamo.firebase.utils.Constants.MOVIES_REF
 import ro.alexmamo.firebase.utils.Constants.RATING
 import ro.alexmamo.firebase.utils.Constants.REALTIME_DATABASE
@@ -22,15 +22,16 @@ class MoviesRepository @Inject constructor(
     @Named(MOVIES_REF) private val moviesDbRef: DatabaseReference,
 ) {
     fun getMoviesFrom(productName: String) = flow {
-        emit(Loading())
-        emit(Success(when (productName) {
-            CLOUD_FIRESTORE -> getMoviesFromCloudFirestore()
-            REALTIME_DATABASE -> getMoviesFromRealtimeDatabase()
-            else -> throw AssertionError()
-        }))
-    }. catch { error ->
-        error.message?.let { errorMessage ->
-            emit(Failure(errorMessage))
+        try {
+            emit(Loading)
+            val movies = when (productName) {
+                CLOUD_FIRESTORE -> getMoviesFromCloudFirestore()
+                REALTIME_DATABASE -> getMoviesFromRealtimeDatabase()
+                else -> throw AssertionError()
+            }
+            emit(Success(movies))
+        } catch (e: Exception) {
+            emit(Failure(e.message ?: ERROR_MESSAGE))
         }
     }
 

@@ -22,20 +22,18 @@ import ro.alexmamo.firebase.utils.Constants.PRODUCT_NAME
 @AndroidEntryPoint
 @ExperimentalCoroutinesApi
 class MoviesFragment: BaseFragment<FragmentMoviesBinding>(FragmentMoviesBinding::inflate), OnMovieClickListener {
-    private lateinit var productName: String
     private var adapter = MoviesAdapter(this)
     private val viewModel by viewModels<MoviesViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         getProductNameFromBundle()
         setMoviesAdapter()
-        setToolbarTitle()
-        getMovies()
     }
 
     private fun getProductNameFromBundle() {
         arguments?.getString(PRODUCT_NAME)?.let { productName ->
-            this.productName = productName
+            setToolbarTitle(productName)
+            getMovies(productName)
         }
     }
 
@@ -43,11 +41,11 @@ class MoviesFragment: BaseFragment<FragmentMoviesBinding>(FragmentMoviesBinding:
         dataBinding.moviesRecyclerView.adapter = adapter
     }
 
-    private fun setToolbarTitle() {
+    private fun setToolbarTitle(productName: String) {
         (activity as MainActivity).supportActionBar?.title = productName
     }
 
-    private fun getMovies() {
+    private fun getMovies(productName: String) {
         viewModel.getMoviesFrom(productName).observe(viewLifecycleOwner, { response ->
             when(response) {
                 is Loading -> dataBinding.progressBar.show()

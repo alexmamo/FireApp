@@ -8,7 +8,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Dropbox/Projects/Kotlin/Firebase/app/src/main/res/layout/fragment_movie.xml" value="0.5541666666666667" />
+        <entry key="..\:/Dropbox/Projects/Kotlin/Firebase/app/src/main/res/layout/fragment_movies.xml" value="0.5541666666666667" />
         <entry key="..\:/Dropbox/Projects/Kotlin/Firebase/app/src/main/res/layout/fragment_profile.xml" value="0.553125" />
+        <entry key="..\:/Dropbox/Projects/Kotlin/Firebase/app/src/main/res/layout/layout_movie.xml" value="0.5541666666666667" />
       </map>
     </option>
   </component>

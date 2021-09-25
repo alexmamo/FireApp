@@ -7,6 +7,9 @@ object Constants {
     //App
     const val TAG = "FireAppTag"
 
+    //Messages
+    const val ERROR_MESSAGE = "Unexpected error!"
+
     //Intents
     const val SPLASH_INTENT = "splashIntent"
     const val AUTH_INTENT = "authIntent"
