@@ -9,7 +9,7 @@ import ro.alexmamo.firebase.data.Product
 import ro.alexmamo.firebase.databinding.ProductDataBinding
 
 class ProductsAdapter(
-    val products: List<Product>,
+    private val products: List<Product>,
     private val onProductClickListener: OnProductClickListener
 ) : RecyclerView.Adapter<ProductsAdapter.ProductViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
