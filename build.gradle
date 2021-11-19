@@ -1,18 +1,18 @@
 buildscript {
     ext {
         gradle_version = '7.0.3'
-        kotlin_gradle_version = "1.5.31"
+        kotlin_gradle_version = "1.6.0"
         coroutines_version = "1.4.1"
         google_services_version = "4.3.8"
         hilt_version = "2.38.1"
-        core_version = "1.7.0-rc01"
+        core_version = "1.7.0"
         appcompat_version = "1.3.1"
-        constraint_layout_version = "2.1.1"
+        constraint_layout_version = "2.1.2"
         recycler_view_version = "1.2.1"
         card_view_version = "1.0.0"
         fragment_version = "1.3.6"
-        view_model_version = "2.3.1"
-        live_data_version = "2.3.1"
+        view_model_version = "2.4.0"
+        live_data_version = "2.4.0"
         extensions_version = "2.2.0"
         nav_version = "2.3.5"
         material_version = "1.4.0"

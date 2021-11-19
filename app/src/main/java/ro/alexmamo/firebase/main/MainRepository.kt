@@ -33,7 +33,7 @@ class MainRepository @Inject constructor(
     @ExperimentalCoroutinesApi
     fun getFirebaseAuthState() = callbackFlow  {
         val authStateListener = AuthStateListener { auth ->
-            offer(auth.currentUser == null)
+            trySend(auth.currentUser == null)
         }
         auth.addAuthStateListener(authStateListener)
         awaitClose {
