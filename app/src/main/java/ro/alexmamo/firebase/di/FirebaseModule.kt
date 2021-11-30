@@ -1,9 +1,7 @@
 package ro.alexmamo.firebase.di
 
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
 import dagger.Provides
@@ -17,35 +15,23 @@ import javax.inject.Named
 @InstallIn(SingletonComponent::class)
 object FirebaseModule {
     @Provides
-    fun provideFirebaseAuthInstance(): FirebaseAuth {
-        return FirebaseAuth.getInstance()
-    }
+    fun provideFirebaseAuthInstance() = FirebaseAuth.getInstance()
 
     @Provides
-    fun provideFirebaseFirestore(): FirebaseFirestore {
-        return FirebaseFirestore.getInstance()
-    }
+    fun provideFirebaseFirestore() = FirebaseFirestore.getInstance()
 
     @Provides
     @Named(USERS_REF)
-    fun provideUsersRef(rootRef: FirebaseFirestore): CollectionReference {
-        return rootRef.collection(USERS_REF)
-    }
+    fun provideUsersRef(db: FirebaseFirestore) = db.collection(USERS_REF)
 
     @Provides
     @Named(MOVIES_REF)
-    fun provideCloudFirestoreMoviesRef(rootRef: FirebaseFirestore): CollectionReference {
-        return rootRef.collection(MOVIES_REF)
-    }
+    fun provideCloudFirestoreMoviesRef(db: FirebaseFirestore) = db.collection(MOVIES_REF)
 
     @Provides
-    fun provideFirebaseDatabase(): FirebaseDatabase {
-        return FirebaseDatabase.getInstance()
-    }
+    fun provideFirebaseDatabase() = FirebaseDatabase.getInstance()
 
     @Provides
     @Named(MOVIES_REF)
-    fun provideRealtimeDatabaseMoviesRef(rootRef: FirebaseDatabase): DatabaseReference {
-        return rootRef.reference.child(MOVIES_REF)
-    }
+    fun provideRealtimeDatabaseMoviesRef(db: FirebaseDatabase) = db.reference.child(MOVIES_REF)
 }
